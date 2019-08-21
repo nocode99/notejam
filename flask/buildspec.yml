@@ -21,4 +21,4 @@ phases:
       - make push DOCKER_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
   post_build:
     commands:
-      - cd flask && make deploy DOCKER_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - make deploy DOCKER_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
