@@ -23,7 +23,7 @@ build: check-env ## Builds the docker image
 
 .PHONY: tests
 tests: check-env ## Runs unit tests
-	@docker run --rm -it $(ECR_IMAGE):$(DOCKER_TAG) python tests.py
+	@docker run --rm $(ECR_IMAGE):$(DOCKER_TAG) python tests.py
 
 
 .PHONY: push
