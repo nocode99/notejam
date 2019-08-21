@@ -15,9 +15,10 @@ phases:
     commands:
       - eval "$(aws ecr get-login --region us-east-1 --no-include-email)"
       - export AWS_ACCOUNT_ID=$(echo $CODEBUILD_BUILD_ARN | cut -d ':' -f5)
+      - cd flask
       - make build
       - make tests
       - make push DOCKER_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
   post_build:
     commands:
-      - make deploy DOCKER_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - cd flask && make deploy DOCKER_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
